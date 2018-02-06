@@ -31,18 +31,21 @@ void CaptureFrame::capture_video(std::string filename,std::string video_window_n
         }
         window_name = video_window_name;
     }
-//Capture Camera stream
-void CaptureFrame::capture_video(int port,std::string video_window_name)
+//when camera number is given 
+void CaptureFrame::capture_video(int camera,std::string video_window_name)
     {
-        //opens and read video 
-        cap.open(port);
+        //opens camera and start reading
+        std::cout<<"got here";
+        cap.open(camera);
         if(!cap.isOpened())  // check if we succeeded
         {
             printf("Video is not opened..:(");//The video couldn't be opened. exiting.
             exit(0);
         }
         window_name = video_window_name;
+        std::cout<<"test";
     }
+
 //load image into already existing object of CaptureFrame class
 void CaptureFrame::reload_image(cv::Mat image_input,std::string str)
     {
@@ -53,6 +56,12 @@ void CaptureFrame::reload_image(cv::Mat image_input,std::string str)
         }
         //Assignes new value to image and window name.
         image = image_input;
+        window_name = str;
+    }
+
+void CaptureFrame::reload_video(cv::VideoCapture video_input,std::string str)
+    {
+        cap = video_input;
         window_name = str;
     }
 

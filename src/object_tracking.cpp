@@ -2,6 +2,7 @@
 #include "object_tracking.h"
 #include "view_frame.h"
 #include "image_processing.h"
+#include "timer.h"
 #include <opencv2/opencv.hpp> 
 #include "opencv2/imgproc/imgproc.hpp"
 #include <opencv2/tracking.hpp>
@@ -61,7 +62,7 @@ void ObjectTracking::MIL_tracking(CaptureFrame obj) //MIL tracking algorithm
     while (true)
     {
         obj.frame_extraction();
-        contour_identification(hsv_segmentation(obj));
+        contour_identification(image_segmentation(obj));
         if (flag) //if a center is identified. i.e. an color object is found.
         {
             tracker->init(obj.retrieve_image(), box);
@@ -126,8 +127,9 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
     tracker = cv::TrackerKCF::create();
     while (true)
     {
+        // timer.init();
         obj.frame_extraction();
-        contour_identification(hsv_segmentation(obj));
+        contour_identification(image_segmentation(obj));
         if (flag) //if a center is identified. i.e. an color object is found.
         {
             tracker->init(obj.retrieve_image(), box);
@@ -135,6 +137,7 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
             std::cout << "Re-initializing Tracker\n";
             for (;;)
             {
+                // timer.init();
                 cv::Rect2d bbox = box;
                 obj.frame_extraction();
                 cv::Mat input = obj.retrieve_image();
@@ -154,7 +157,9 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
                     std::cout << "Tracking Failed :{\n";
                     break;
                 }
+                // timer.end();
                 CaptureFrame output(input, "Tracked frame");
+                // timer.
                 viewer.single_view_uninterrupted(output);
 
                 char c = (char)cv::waitKey(5);
@@ -191,7 +196,7 @@ void ObjectTracking::MedianFlow_tracking(CaptureFrame obj) //MIL tracking algori
     while (true)
     {
         obj.frame_extraction();
-        contour_identification(hsv_segmentation(obj));
+        contour_identification(image_segmentation(obj));
         if (flag) //if a center is identified. i.e. an color object is found.
         {
             tracker->init(obj.retrieve_image(), box);
@@ -255,7 +260,7 @@ void ObjectTracking::Boosting_tracking(CaptureFrame obj) //MIL tracking algorith
     while (true)
     {
         obj.frame_extraction();
-        contour_identification(hsv_segmentation(obj));
+        contour_identification(image_segmentation(obj));
         if (flag) //if a center is identified. i.e. an color object is found.
         {
             tracker->init(obj.retrieve_image(), box);
