@@ -35,6 +35,10 @@ image_processing.h
 ../include/image_processing.h
 opencv2/opencv.hpp
 -
+opencv2/tracking.hpp
+-
+opencv2/core/ocl.hpp
+-
 
 ../include/timer.h
 capture_frame.h

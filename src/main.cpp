@@ -8,10 +8,10 @@
 
 int main(int argc, char** argv)//The main function
 {
-    Timer timer;
-    CaptureFrame vid;
-    ObjectTracking tracker;
-    vid.capture_video(0,"WebCam feed");
-    tracker.KCF_tracking(vid);
+    // Timer timer;
+    CaptureFrame vid;//taking video input
+    ObjectTracking tracker;//Object creation for tracker
+    vid.capture_video(0,"WebCam feed");//capturing camera
+    tracker.KCF_tracking(vid);//Tracking in video camera feed
     return 1;
 }
