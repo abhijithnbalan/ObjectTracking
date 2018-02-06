@@ -49,6 +49,10 @@ void ObjectTracking::contour_identification(CaptureFrame obj)
     box = boundingRect(contours[index]);
     flag = true;
     }
+    else
+    {
+        flag = false;
+    }
 
     return;
 }
@@ -68,13 +72,12 @@ void ObjectTracking::MIL_tracking(CaptureFrame obj) //MIL tracking algorithm
             tracker->init(obj.retrieve_image(), box);
 
             std::cout << "Re-initializing Tracker\n";
-            for (;;)
+            for (int i = 0;;i++)
             {
                 cv::Rect2d bbox = box;
                 obj.frame_extraction();
                 cv::Mat input = obj.retrieve_image();
                 bool isSuccess = tracker->update(input, bbox); //Checking if the tracker can update 
-                imshow("sjdfk",input);
                 center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
 
                 if (isSuccess)
@@ -83,6 +86,24 @@ void ObjectTracking::MIL_tracking(CaptureFrame obj) //MIL tracking algorithm
                     rectangle(input, bbox, cv::Scalar(0, 0, 0), 2, 1);
                     std::cout << "tracking"
                               << "  " << center.x << "  " << center.y << "\n";
+                    if(i == 25)
+                    {
+                        prev = center_backup;
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                        center_backup = center;
+                        printf("Object position x: %d  y: %d\n",int(center.x),int(center.y));
+                        if(abs(prev.x - center.x) > direction_threshold ||abs(prev.y - center.y) > direction_threshold )
+                        {
+                             printf("Motion Detected    dx : %d , dy : %d \n",int(center.x - prev.x),int(center.y - prev.y)) ;
+
+                        }
+                        i = 0;
+                        
+                    }
+                    else
+                    {
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                    }
                 }
                 else
                 {
@@ -105,8 +126,9 @@ void ObjectTracking::MIL_tracking(CaptureFrame obj) //MIL tracking algorithm
 
         else
         {
-            std::cout << "Tracker not initiated. Searching for color/n";
-            imshow("tracked", obj.retrieve_image());
+            std::cout << "Tracker not initiated. Searching for color\n";
+            CaptureFrame output(obj.retrieve_image(),"Tracked frame");
+            viewer.single_view_uninterrupted(output);
         }
 
         tracker->clear();
@@ -135,7 +157,7 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
             tracker->init(obj.retrieve_image(), box);
 
             std::cout << "Re-initializing Tracker\n";
-            for (;;)
+            for (int i = 0;;i++)
             {
                 // timer.init();
                 cv::Rect2d bbox = box;
@@ -143,13 +165,31 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
                 cv::Mat input = obj.retrieve_image();
                 bool isSuccess = tracker->update(input, bbox); //Checking if the tracker can update .
                 center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
-
+                // cout<<"test  "<<center.x<<"\n";
                 if (isSuccess)
                 {
                     //Tracker update was successful and the rectangle is drawn and the center is printed.
                     rectangle(input, bbox, cv::Scalar(0, 0, 0), 2, 1);
-                    std::cout << "tracking"
-                              << "  " << center.x << "  " << center.y << "\n";
+                    // std::cout << "tracking"
+                            //   << "  " << center.x << "  " << center.y<<"\n";
+                    if(i == 25)
+                    {
+                        prev = center_backup;
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                        center_backup = center;
+                        printf("Object position x: %d  y: %d\n",int(center.x),int(center.y));
+                        if(abs(prev.x - center.x) > direction_threshold ||abs(prev.y - center.y) > direction_threshold )
+                        {
+                             printf("Motion Detected    dx : %d , dy : %d \n",int(center.x - prev.x),int(center.y - prev.y)) ;
+
+                        }
+                        i = 0;
+                        
+                    }
+                    else
+                    {
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                    }
                 }
                 else
                 {
@@ -174,8 +214,9 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //MIL tracking algorithm
 
         else
         {
-            std::cout << "Tracker not initiated. Searching for color/n";
-            imshow("tracked", obj.retrieve_image());
+            std::cout << "Tracker not initiated. Searching for color\n";
+            CaptureFrame output(obj.retrieve_image(),"Tracked frame");
+            viewer.single_view_uninterrupted(output);
         }
 
         tracker->clear();
@@ -202,20 +243,37 @@ void ObjectTracking::MedianFlow_tracking(CaptureFrame obj) //MIL tracking algori
             tracker->init(obj.retrieve_image(), box);
 
             std::cout << "Re-initializing Tracker\n";
-            for (;;)
+            for (int i = 0;;i++)
             {
                 cv::Rect2d bbox = box;
                 obj.frame_extraction();
                 cv::Mat input = obj.retrieve_image();
                 bool isSuccess = tracker->update(input, bbox); //Checking if the tracker can update .
-                center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
 
                 if (isSuccess)
                 {
                     //Tracker update was successful and the rectangle is drawn and the center is printed.
                     rectangle(input, bbox, cv::Scalar(0, 0, 0), 2, 1);
                     std::cout << "tracking"
-                              << "  " << center.x << "  " << center.y << "\n";
+                              << "  " << center.x << "  " << center.y ;
+                    if(i == 25)
+                    {
+                        prev = center_backup;
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                        center_backup = center;
+                        printf("Object position x: %d  y: %d\n",int(center.x),int(center.y));
+                        if(abs(prev.x - center.x) > direction_threshold ||abs(prev.y - center.y) > direction_threshold )
+                        {
+                             printf("Motion Detected    dx : %d , dy : %d \n",int(center.x - prev.x),int(center.y - prev.y)) ;
+
+                        }
+                        i = 0;
+                        
+                    }
+                    else
+                    {
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                    }
                 }
                 else
                 {
@@ -238,8 +296,9 @@ void ObjectTracking::MedianFlow_tracking(CaptureFrame obj) //MIL tracking algori
 
         else
         {
-            std::cout << "Tracker not initiated. Searching for color/n";
-            imshow("tracked", obj.retrieve_image());
+            std::cout << "Tracker not initiated. Searching for color\n";
+            CaptureFrame output(obj.retrieve_image(),"Tracked frame");
+            viewer.single_view_uninterrupted(output);
         }
 
         tracker->clear();
@@ -266,7 +325,7 @@ void ObjectTracking::Boosting_tracking(CaptureFrame obj) //MIL tracking algorith
             tracker->init(obj.retrieve_image(), box);
 
             std::cout << "Re-initializing Tracker\n";
-            for (;;)
+            for (int i = 0;;i++)            
             {
                 cv::Rect2d bbox = box;
                 obj.frame_extraction();
@@ -280,6 +339,24 @@ void ObjectTracking::Boosting_tracking(CaptureFrame obj) //MIL tracking algorith
                     rectangle(input, bbox, cv::Scalar(0, 0, 0), 2, 1);
                     std::cout << "tracking"
                               << "  " << center.x << "  " << center.y << "\n";
+                    if(i == 25)
+                    {
+                        prev = center_backup;
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                        center_backup = center;
+                        printf("Object position x: %d  y: %d\n",int(center.x),int(center.y));
+                        if(abs(prev.x - center.x) > direction_threshold ||abs(prev.y - center.y) > direction_threshold )
+                        {
+                             printf("Motion Detected    dx : %d , dy : %d \n",int(center.x - prev.x),int(center.y - prev.y)) ;
+
+                        }
+                        i = 0;
+                        
+                    }
+                    else
+                    {
+                        center = cv::Point2d(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
+                    }
                 }
                 else
                 {
@@ -302,8 +379,9 @@ void ObjectTracking::Boosting_tracking(CaptureFrame obj) //MIL tracking algorith
 
         else
         {
-            std::cout << "Tracker not initiated. Searching for color/n";
-            imshow("tracked", obj.retrieve_image());
+            std::cout << "Tracker not initiated. Searching for color\n";
+            CaptureFrame output(obj.retrieve_image(),"Tracked frame");
+            viewer.single_view_uninterrupted(output);
         }
 
         tracker->clear();
@@ -314,4 +392,10 @@ void ObjectTracking::Boosting_tracking(CaptureFrame obj) //MIL tracking algorith
     }
 
     return;
+}
+
+ObjectTracking::ObjectTracking()
+{
+    center = prev = center_backup = cv::Point2d(0,0);
+    direction_threshold = 15;
 }
