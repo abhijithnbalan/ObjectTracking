@@ -61,6 +61,7 @@ int ObjectTracking::tracker_function(CaptureFrame obj)//The tracker function
 {
 
     ViewFrame viewer;
+    Timer timer;
         obj.frame_extraction();
         contour_identification(image_segmentation(obj));
         if (flag) //if a center is identified. i.e. an color object is found.
@@ -70,7 +71,7 @@ int ObjectTracking::tracker_function(CaptureFrame obj)//The tracker function
             std::cout << "Re-initializing Tracker\n";
             for (int i = 0;;i++)
             {
-                // timer.init();
+                timer.timer_init();
                 cv::Rect2d bbox = box;
                 obj.frame_extraction();
                 cv::Mat input = obj.retrieve_image();
@@ -105,12 +106,13 @@ int ObjectTracking::tracker_function(CaptureFrame obj)//The tracker function
                 else
                 {
                     //Tracker couldnt update .
-                    std::cout << "Tracking Failed :{\n";
+                    std::cout << "Tracking Failed :{ \n";
                     break;
                 }
-                // timer.end();
+                timer.timer_end();
                 CaptureFrame output(input, "Tracked frame");
                 // timer.
+                // output = timer.add_fps(output);
                 viewer.single_view_uninterrupted(output);
 
                 char c = (char)cv::waitKey(5);
@@ -160,11 +162,14 @@ void ObjectTracking::KCF_tracking(CaptureFrame obj) //KCF tracking algorithm
 {
 
     ViewFrame viewer;
+    Timer timer1;
     
     tracker = cv::TrackerKCF::create();
     while (true)
     {
+        timer1.timer_init();
        int feedback = tracker_function(obj);
+       timer1.timer_end();
         if(feedback == 1)
         {
             tracker->clear();

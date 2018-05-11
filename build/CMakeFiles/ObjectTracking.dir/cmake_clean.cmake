@@ -1,4 +1,4 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o"
   "CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o"
   "CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o"
@@ -11,6 +11,6 @@ FILE(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/ObjectTracking.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/ObjectTracking.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
