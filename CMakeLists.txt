@@ -7,6 +7,8 @@ find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_modules")
+
+
 ## END CMAKE INITIALISATION
 
 ## PROJECT LANGUAGE
@@ -43,10 +45,20 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 ## PROJCET INCLUDES DIRECTORIES
 #INCLUDE_DIRECTORIES(${FFMPEG_INCLUDE_DIR})
+LINK_DIRECTORIES(/$ENV{HOME}/ffmpeg_build/lib/)
+LINK_DIRECTORIES(/usr/lib/x86_64-linux-gnu/)
+LINK_DIRECTORIES(/usr/lib/)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/include/log4cpp")
+FIND_PACKAGE(log4cpp REQUIRED)
+INCLUDE_DIRECTORIES(${LOG4CPP_INCLUDE_DIR})
+SET(LIBS ${LOG4CPP_LIBRARIES} ${LIBS})
 
+MESSAGE("############################# ${LOG4CPP_LIBRARIES}")
+MESSAGE("############################# ${LOG4CPP_INCLUDE_DIR}") 
 
 INCLUDE_DIRECTORIES(include)
 SET(SOURCES
+ ${CMAKE_CURRENT_LIST_DIR}/src/logger.cpp
  ${CMAKE_CURRENT_LIST_DIR}/src/capture_frame.cpp
  ${CMAKE_CURRENT_LIST_DIR}/src/view_frame.cpp
  ${CMAKE_CURRENT_LIST_DIR}/src/algorithm.cpp
@@ -69,7 +81,8 @@ ADD_EXECUTABLE(ObjectTracking ${SOURCES})
 #add_executable(exe ${SOURCES})
 #TARGET_LINK_LIBRARIES(exe pthread )
 #target_link_libraries(exe ${Boost_LIBRARIES})
-target_link_libraries( ObjectTracking ${OpenCV_LIBS} )
+target_link_libraries( ObjectTracking ${OpenCV_LIBS} ${LOG4CPP_LIBRARIES})
+
 
 message( "*************************************" )
 message( "*************************************" )

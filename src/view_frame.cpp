@@ -114,8 +114,8 @@ void ViewFrame::multiple_view_interrupted(CaptureFrame object1, CaptureFrame obj
     cv::Mat temporary1, temporary2;
     resize(object1.retrieve_image(), temporary1, cv::Size(object1.retrieve_image().cols * percent / 100, object1.retrieve_image().rows * percent / 100));
     resize(object2.retrieve_image(), temporary2, cv::Size(object2.retrieve_image().cols * percent / 100, object2.retrieve_image().rows * percent / 100));
-    CaptureFrame output1(temporary1, object1.window_name +" Resized");
-    CaptureFrame output2(temporary2, object2.window_name +" Resized");
+    CaptureFrame output1(temporary1, object1.window_name);
+    CaptureFrame output2(temporary2, object2.window_name);
     ViewFrame::multiple_view_interrupted(output1, output2);
     return;
 }
@@ -133,9 +133,9 @@ void ViewFrame::multiple_view_interrupted(CaptureFrame object1, CaptureFrame obj
     resize(object1.retrieve_image(), temporary1, cv::Size(object1.retrieve_image().cols * percent / 100, object1.retrieve_image().rows * percent / 100));
     resize(object2.retrieve_image(), temporary2, cv::Size(object2.retrieve_image().cols * percent / 100, object2.retrieve_image().rows * percent / 100));
     resize(object3.retrieve_image(), temporary3, cv::Size(object3.retrieve_image().cols * percent / 100, object3.retrieve_image().rows * percent / 100));
-    CaptureFrame output1(temporary1, object1.window_name +" Resized");
-    CaptureFrame output2(temporary2, object2.window_name +" Resized");
-    CaptureFrame output3(temporary3, object3.window_name +" Resized");
+    CaptureFrame output1(temporary1, object1.window_name);
+    CaptureFrame output2(temporary2, object2.window_name);
+    CaptureFrame output3(temporary3, object3.window_name);
     ViewFrame::multiple_view_interrupted(output1, output2, output3);
     return;
 }
@@ -304,13 +304,14 @@ CaptureFrame ViewFrame::add_overlay_percent(CaptureFrame object,int x_percent, i
     CaptureFrame output = add_overlay(object,x,y,s);
     return output;
 }
-CaptureFrame ViewFrame::join_image_horizontal(CaptureFrame object1,CaptureFrame object2,int mode)
+CaptureFrame ViewFrame::join_image_horizontal(CaptureFrame object1,CaptureFrame object2,int mode)//Join images for multiple views
 {
     cv::Mat image1 = object1.retrieve_image().clone();
     cv::Mat image2 = object2.retrieve_image().clone();
 
-    if (image1.channels() != 3)
+    if (image1.channels() != 3)//check for consistency in number of channels
     {
+        
         if (image1.channels() == 1)
         {
             cvtColor(image1, image1, CV_GRAY2BGR);
@@ -323,6 +324,7 @@ CaptureFrame ViewFrame::join_image_horizontal(CaptureFrame object1,CaptureFrame 
     }
     if (image2.channels() != 3)
     {
+        
         if (image2.channels() == 1)
         {
             cvtColor(image2, image2, CV_GRAY2BGR);
@@ -333,6 +335,8 @@ CaptureFrame ViewFrame::join_image_horizontal(CaptureFrame object1,CaptureFrame 
             return object2;
         }
     }
+
+    //paste the two inputs into a single bigger image
     int row_max = std::max(image1.rows,image2.rows);
     cv::Mat full_image = cv::Mat::zeros(row_max, image1.cols + image2.cols, CV_8UC3);
     cv::Rect sub_roi;
@@ -352,13 +356,14 @@ CaptureFrame ViewFrame::join_image_horizontal(CaptureFrame object1,CaptureFrame 
     return output;
 }
 
-CaptureFrame ViewFrame::join_image_vertical(CaptureFrame object1,CaptureFrame object2,int mode)
+CaptureFrame ViewFrame::join_image_vertical(CaptureFrame object1,CaptureFrame object2,int mode)//Join images for multiple views
 {
     cv::Mat image1 = object1.retrieve_image().clone();
     cv::Mat image2 = object2.retrieve_image().clone();
 
-    if (image1.channels() != 3)
+    if (image1.channels() != 3)//Checking consistency in number of channels
     {
+        
         if (image1.channels() == 1)
         {
             cvtColor(image1, image1, CV_GRAY2BGR);
@@ -371,6 +376,7 @@ CaptureFrame ViewFrame::join_image_vertical(CaptureFrame object1,CaptureFrame ob
     }
     if (image2.channels() != 3)
     {
+        
         if (image2.channels() == 1)
         {
             cvtColor(image2, image2, CV_GRAY2BGR);
@@ -381,6 +387,8 @@ CaptureFrame ViewFrame::join_image_vertical(CaptureFrame object1,CaptureFrame ob
             return object2;
         }
     }
+
+    //Pasting the images to a bigger image
     int col_max = std::max(image1.cols,image2.cols);
     cv::Mat full_image = cv::Mat::zeros(image1.rows + image2.rows,col_max, CV_8UC3);
     cv::Rect sub_roi;

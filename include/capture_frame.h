@@ -5,6 +5,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include <stdio.h>
 #include <string.h>
+#include "logger.h"
 /*  
     CaptureFrame class will be used as an instace of Image.
 */
@@ -13,6 +14,7 @@ class CaptureFrame
     protected://Acessing these variables can only be through member functions
         cv::Mat image;//Stores Image file
         cv::VideoCapture cap;//Stores VideoCapture file
+        // Logger logger;
         
     public:
         std::string window_name;// Window name of stored image 
@@ -28,6 +30,7 @@ class CaptureFrame
 
         //load a image file into an existing CaptureFrame object
         void reload_image(cv::Mat input_image,std::string Window_name);
+        void reload_image_shallow(cv::Mat input_image,std::string Window_name);
 
         //load a image file into an existing CaptureFrame object
         void reload_video(cv::VideoCapture input_video,std::string Window_name);
@@ -37,6 +40,8 @@ class CaptureFrame
         cv::VideoCapture retrieve_video();
 
         void frame_extraction();//Extract frames from video
+
+        void frame_extraction(int number_of_frames);
 
         void clear();//Clears and releases the memory allocated for variables
 

@@ -118,6 +118,13 @@ void ImageProcessing::on_trackbar_single(int red, void *ptr)
     c->myhandler_single(red);
     return;
 }
+CaptureFrame ImageProcessing::resize_image(CaptureFrame image,int percent)
+{
+    cv::Mat img;
+    resize(image.retrieve_image(), img, cv::Size(image.retrieve_image().cols * percent/ 100, image.retrieve_image().rows * percent / 100));
+    return CaptureFrame(img,image.window_name + " resized");
+
+}
 //Function to change parameter for trackbar change
 void ImageProcessing::myhandler(int red)
 {
@@ -166,8 +173,8 @@ void ImageProcessing::myhandlerbutton(int state)
 ImageProcessing::ImageProcessing() //Constructor definition The values are preset in this constructor.
 {
      //Threshold values preset for red color identification.
-    thresh_low_0 = cv::Scalar(0, 140, 180, 0), thresh_high_0 = cv::Scalar(5, 255, 255, 0),
-    thresh_low_180 = cv::Scalar(160, 115, 100, 0), thresh_high_180 = cv::Scalar(180, 255, 255, 0);
+    thresh_low_0 = cv::Scalar(0, 140, 180, 0), thresh_high_0 = cv::Scalar(16, 255, 255, 0),
+    thresh_low_180 = cv::Scalar(160, 160, 180, 0), thresh_high_180 = cv::Scalar(180, 255, 255, 0);
     thresh_white = cv::Scalar(0, 215, 0, 0);
     use_white = false; white_use_value = 0;
     //Region of interest preset for 30 percentage from center in height and full width.

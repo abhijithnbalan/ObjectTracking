@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ObjectTracking.dir/src/logger.cpp.o"
   "CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o"
   "CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o"
   "CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o"

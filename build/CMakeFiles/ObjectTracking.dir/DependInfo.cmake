@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/rd/Vision_Opencv/ObjectTracking/src/algorithm.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o"
   "/home/rd/Vision_Opencv/ObjectTracking/src/capture_frame.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o"
   "/home/rd/Vision_Opencv/ObjectTracking/src/image_processing.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o"
+  "/home/rd/Vision_Opencv/ObjectTracking/src/logger.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/logger.cpp.o"
   "/home/rd/Vision_Opencv/ObjectTracking/src/main.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/main.cpp.o"
   "/home/rd/Vision_Opencv/ObjectTracking/src/object_tracking.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o"
   "/home/rd/Vision_Opencv/ObjectTracking/src/timer.cpp" "/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles/ObjectTracking.dir/src/timer.cpp.o"

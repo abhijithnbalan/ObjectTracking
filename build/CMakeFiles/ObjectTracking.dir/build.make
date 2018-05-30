@@ -57,9 +57,33 @@ include CMakeFiles/ObjectTracking.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ObjectTracking.dir/flags.make
 
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.o: ../src/logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ObjectTracking.dir/src/logger.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/logger.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/logger.cpp
+
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ObjectTracking.dir/src/logger.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Vision_Opencv/ObjectTracking/src/logger.cpp > CMakeFiles/ObjectTracking.dir/src/logger.cpp.i
+
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ObjectTracking.dir/src/logger.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Vision_Opencv/ObjectTracking/src/logger.cpp -o CMakeFiles/ObjectTracking.dir/src/logger.cpp.s
+
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.requires:
+
+.PHONY : CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.requires
+
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.provides: CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ObjectTracking.dir/build.make CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.provides.build
+.PHONY : CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.provides
+
+CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.provides.build: CMakeFiles/ObjectTracking.dir/src/logger.cpp.o
+
+
 CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o: ../src/capture_frame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/capture_frame.cpp
 
 CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.i: cmake_force
@@ -83,7 +107,7 @@ CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o: ../src/view_frame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/view_frame.cpp
 
 CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o.provides.build: CMakeFiles/Ob
 
 CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o: ../src/algorithm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/algorithm.cpp
 
 CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o.provides.build: CMakeFiles/Obj
 
 CMakeFiles/ObjectTracking.dir/src/timer.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/timer.cpp.o: ../src/timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ObjectTracking.dir/src/timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ObjectTracking.dir/src/timer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/timer.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/timer.cpp
 
 CMakeFiles/ObjectTracking.dir/src/timer.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/ObjectTracking.dir/src/timer.cpp.o.provides.build: CMakeFiles/ObjectT
 
 CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o: ../src/image_processing.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/image_processing.cpp
 
 CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/ObjectTracking.dir/src/image_processing.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o: ../src/object_tracking.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/object_tracking.cpp
 
 CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/ObjectTracking.dir/src/object_tracking.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/ObjectTracking.dir/src/main.cpp.o: CMakeFiles/ObjectTracking.dir/flags.make
 CMakeFiles/ObjectTracking.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ObjectTracking.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ObjectTracking.dir/src/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ObjectTracking.dir/src/main.cpp.o -c /home/rd/Vision_Opencv/ObjectTracking/src/main.cpp
 
 CMakeFiles/ObjectTracking.dir/src/main.cpp.i: cmake_force
@@ -227,6 +251,7 @@ CMakeFiles/ObjectTracking.dir/src/main.cpp.o.provides.build: CMakeFiles/ObjectTr
 
 # Object files for target ObjectTracking
 ObjectTracking_OBJECTS = \
+"CMakeFiles/ObjectTracking.dir/src/logger.cpp.o" \
 "CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o" \
 "CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o" \
 "CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o" \
@@ -238,6 +263,7 @@ ObjectTracking_OBJECTS = \
 # External object files for target ObjectTracking
 ObjectTracking_EXTERNAL_OBJECTS =
 
+../bin/ObjectTracking: CMakeFiles/ObjectTracking.dir/src/logger.cpp.o
 ../bin/ObjectTracking: CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o
 ../bin/ObjectTracking: CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o
 ../bin/ObjectTracking: CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o
@@ -274,6 +300,7 @@ ObjectTracking_EXTERNAL_OBJECTS =
 ../bin/ObjectTracking: /usr/local/lib/libopencv_ximgproc.so.3.3.1
 ../bin/ObjectTracking: /usr/local/lib/libopencv_xobjdetect.so.3.3.1
 ../bin/ObjectTracking: /usr/local/lib/libopencv_xphoto.so.3.3.1
+../bin/ObjectTracking: /usr/local/lib/liblog4cpp.so
 ../bin/ObjectTracking: /usr/local/lib/libopencv_photo.so.3.3.1
 ../bin/ObjectTracking: /usr/local/lib/libopencv_shape.so.3.3.1
 ../bin/ObjectTracking: /usr/local/lib/libopencv_calib3d.so.3.3.1
@@ -293,7 +320,7 @@ ObjectTracking_EXTERNAL_OBJECTS =
 ../bin/ObjectTracking: /usr/local/lib/libopencv_imgproc.so.3.3.1
 ../bin/ObjectTracking: /usr/local/lib/libopencv_core.so.3.3.1
 ../bin/ObjectTracking: CMakeFiles/ObjectTracking.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable ../bin/ObjectTracking"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rd/Vision_Opencv/ObjectTracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ../bin/ObjectTracking"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ObjectTracking.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -301,6 +328,7 @@ CMakeFiles/ObjectTracking.dir/build: ../bin/ObjectTracking
 
 .PHONY : CMakeFiles/ObjectTracking.dir/build
 
+CMakeFiles/ObjectTracking.dir/requires: CMakeFiles/ObjectTracking.dir/src/logger.cpp.o.requires
 CMakeFiles/ObjectTracking.dir/requires: CMakeFiles/ObjectTracking.dir/src/capture_frame.cpp.o.requires
 CMakeFiles/ObjectTracking.dir/requires: CMakeFiles/ObjectTracking.dir/src/view_frame.cpp.o.requires
 CMakeFiles/ObjectTracking.dir/requires: CMakeFiles/ObjectTracking.dir/src/algorithm.cpp.o.requires

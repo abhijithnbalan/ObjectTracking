@@ -9,7 +9,7 @@
 /*
     ImageProcessing class will be used for all processing operations on the image or image steam.
 */
-class ImageProcessing //-------medianBlur or CLAHE dehazing-------//
+class ImageProcessing 
 {
     private://These variables will be used internally
         cv::Mat image_hsv,inter,image_hsv_threshold,image_hsv_threshold_low,image_hsv_threshold_high,image_hsv_threshold_white;
@@ -23,18 +23,20 @@ class ImageProcessing //-------medianBlur or CLAHE dehazing-------//
         
 
     public:
-    int white_use_value;
-        bool use_white;//controlling variable for white filtering
+
         Algorithm algo;//algorithm object
+        int white_use_value;
+        bool use_white;//controlling variable for white filtering
+        
         //threshold(public) can be changed by user
         cv::Scalar thresh_high_0,thresh_high_180,thresh_low_0,thresh_low_180,thresh_white;
         //element for dilation and Morphological Opening.
         cv::Mat element;
-
+        CaptureFrame resize_image(CaptureFrame,int percent);
         CaptureFrame roi_selection(CaptureFrame input_image);//Selecting the Region of interst.
 
         cv::Mat roi_selection(cv::Mat input_image);//Selecting the Region of interst.
-        
+
         CaptureFrame image_segmentation(CaptureFrame input_image);//Color segmentation. according to threshold set.
 
         cv::Mat image_segmentation(cv::Mat input_image);//Color segmentation. according to threshold set.
